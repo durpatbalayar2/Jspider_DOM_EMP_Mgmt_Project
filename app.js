@@ -1,6 +1,7 @@
 import addNewEmployee from "./addNewEmp.js";
 import { employees } from "./data.js";
 import displayData from "./displayData.js";
+import { handleDelete, handleEdit } from "./handleDelete&Edit.js";
 import { searchEmployee } from "./searchE.js";
 
 // Module-1 : Display Employee
@@ -25,3 +26,10 @@ closeBtn.addEventListener("click", function () {
 // Module-3 : Add new Employee in table
 
 addNewEmployee();
+
+
+// Module-4 : Delete and Edit Feature
+
+handleDelete()
+
+handleEdit()

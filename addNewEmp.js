@@ -1,6 +1,14 @@
 import { employees } from "./data.js";
 import displayData from "./displayData.js";
 
+//Initially editId will be null globally
+
+let editId = null;
+
+export function setEditId(id) {
+  editId = id;
+}
+
 export default function addNewEmployee() {
   // selection
   let formEleDiv = document.getElementById("form-ele");
@@ -29,7 +37,8 @@ export default function addNewEmployee() {
       name: newInpUser.value
         .toLowerCase()
         .split(" ")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" "),
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" "),
       userType: userTypeEle.value,
       email: newInpEmail.value,
       phone: newInpPhone.value,
@@ -40,9 +49,40 @@ export default function addNewEmployee() {
       status: newSelStatus.value,
     };
 
-    employees.push(newEmployee);
-    formpopEle.style.display = "none";
+    if (editId === null) {
+      employees.push(newEmployee);
+      formpopEle.style.display = "none";
 
-    displayData(employees);
+      displayData(employees);
+    } else {
+      //console.log(editId)
+
+      let editEmployeeData = employees.map((elem) => {
+        if (elem.id === editId) {
+          return {
+            ...elem,
+            name: newInpUser.value,
+            email: newInpEmail.value,
+            phone: newInpPhone.value,
+            company: newSelCompany.value,
+            location: newSelLocation.value,
+            userType: userTypeEle.value,
+            department: newSelDept.value,
+            designation: newSelDesg.value,
+            status: newSelStatus.value,
+          };
+        }
+
+        return elem;
+      });
+
+      editId = null;
+
+      employees.splice(0, employees.length, ...editEmployeeData);
+
+      formpopEle.style.display = "none";
+
+      displayData(employees);
+    }
   });
 }
