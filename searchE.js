@@ -35,70 +35,70 @@ export function searchEmployee() {
       departmentVal === "" &&
       statusVal === ""
     ) {
-      alert("Invalid filed");
+      alert("Please enter or select at least one search field.");
     } else {
+      let resultArr = userData;
+
       if (nameVal) {
-        let filterName = userData.filter(
-          (elem) => elem.name.toLowerCase().includes(nameVal),
+        resultArr = resultArr.filter((elem) =>
+          elem.name.toLowerCase().includes(nameVal),
         );
-        displayData(filterName);
-      } else if (emailVal) {
-        let filterEmail = userData.filter(
+      }
+
+      if (emailVal) {
+        resultArr = resultArr.filter(
           (elem) => elem.email.toLowerCase() === emailVal,
         );
-        displayData(filterEmail);
-      } else if (phoneVal) {
-        let filterPhone = userData.filter((elem) => elem.phone === phoneVal);
+      }
 
-        displayData(filterPhone);
-      } else if (companyVal) {
-        let filterEmpCompany = userData.filter((elem) => {
-          if (elem.company.toLowerCase() === companyVal) {
-            return elem;
-          }
-        });
+      if (phoneVal) {
+        resultArr = resultArr.filter((elem) => elem.phone === phoneVal);
+      }
 
-        // console.log(filterEmpCompany);
+      if (companyVal) {
+        resultArr = resultArr.filter(
+          (elem) => elem.company.toLowerCase() === companyVal,
+        );
+      }
 
-        displayData(filterEmpCompany);
-      } else if (locationVal) {
-        let filterEmpLocation = userData.filter(
+      if (locationVal) {
+        resultArr = resultArr.filter(
           (elem) => elem.location.toLowerCase() === locationVal,
         );
+      }
 
-        displayData(filterEmpLocation);
-      } else if (designationVal) {
-        let filterEmpDesg = userData.filter(
+      if (designationVal) {
+        resultArr = resultArr.filter(
           (elem) => elem.designation.toLowerCase() === designationVal,
         );
+      }
 
-        displayData(filterEmpDesg);
-      } else if (departmentVal) {
-        let filterEmpDept = userData.filter(
+      if (departmentVal) {
+        resultArr = resultArr.filter(
           (elem) => elem.department.toLowerCase() === departmentVal,
         );
+      }
 
-        displayData(filterEmpDept);
-      } else if (statusVal) {
-        let filterEmpStatus = userData.filter(
+      if (statusVal) {
+        resultArr = resultArr.filter(
           (elem) => elem.status.toLowerCase() === statusVal,
         );
-
-        displayData(filterEmpStatus);
       }
+
+      displayData(resultArr);
     }
+  });
 
-    btnFilterTag.addEventListener("click", function () {
-      inputName.value = "";
-      inputEmail.value = "";
-      inputPhone.value = "";
-      selectCompany.value = "";
-      selectLocation.value = "";
-      selectDepartment.value = "";
-      selectDesgination.value = "";
-      selectStatus.value = "";
+  btnFilterTag.addEventListener("click", function () {
+    inputName.value = "";
+    inputEmail.value = "";
+    inputPhone.value = "";
+    selectCompany.value = "";
+    selectLocation.value = "";
+    selectDepartment.value = "";
+    selectDesgination.value = "";
+    selectStatus.value = "";
 
-      displayData(userData);
-    });
+    displayData(userData);
   });
 }
