@@ -12,11 +12,15 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
+
+    <link rel="stylesheet" href="./style.css">
   </head>
   <body>
     <nav class="navbar container-fluid bg-dark">
       <a class="navbar-brand text-white" href="#">Employee Management System</a>
     </nav>
+
+    <!-- Filter Section -->
 
     <section class="container-fluid mt-3">
       <div class="row">
@@ -28,8 +32,7 @@
               <button
                 id="btn-add"
                 class="btn btn-outline-primary"
-                data-bs-toggle="modal"
-                data-bs-target="#employeeModal"
+               
               >
                 Add Employee
                 <span
@@ -140,6 +143,8 @@
       </div>
     </section>
 
+    <!-- Table Section -->
+
     <section class="container-fluid mt-3">
       <div class="row">
         <div class="col">
@@ -173,34 +178,44 @@
       </div>
     </section>
 
-    <!-- <section class="container-fluid mt-4">
+
+    <!-- Form to Add New Employee -->
+
+    <section id="form-popup" class="container-fluid ">
       <div class="row">
-        <div class="col-4 m-auto">
+        <div class="col-5 m-auto">
           <div class="card">
-            <div class="card-header">
-              <h5 class="text-center">Fill Employee Details</h5>
+            <div class="card-header d-flex justify-content-between">
+              <h5 >Fill Employee Details</h5>
+
+              <button id="btn-close" class="btn  btn-close "></button>
             </div>
 
             <div class="card-body">
-              <form class="d-flex flex-column gap-2">
+              <form id="form-ele" class="d-flex flex-column gap-2">
 
-                <input
+                <input id="new-input-user"
                   class="form-control"
                   type="text"
                   placeholder="Enter employee name"
+                  required
                 />
-                <input
+                <input id="new-input-email"
                   class="form-control"
                   type="email"
                   placeholder="Enter email"
+                  required
                 />
-                <input
+                <input id="new-input-phone"
                   class="form-control"
                   type="text"
                   placeholder="Enter phone number"
+                  minlength="10"
+                  maxlength="10"
+                  required
                 />
 
-                <select  class="form-select">
+                <select id="new-select-company"  class="form-select" required>
                   <option value="" selected disabled>Select Company</option>
                   <option value="google">Google</option>
                   <option value="microsoft">Microsoft</option>
@@ -208,7 +223,7 @@
                   <option value="infosys">Infosys</option>
                 </select>
 
-                <select  class="form-select">
+                <select id="new-select-location" class="form-select" required>
                   <option value="" selected disabled>Select Location</option>
                   <option value="chennai">Chennai</option>
                   <option value="bangalore">Bangalore</option>
@@ -216,7 +231,7 @@
                   <option value="coimbatore">Coimbatore</option>
                 </select>
 
-                <select  class="form-select">
+                <select id="new-select-dept"  class="form-select" required>
                   <option value="" selected disabled>Select Department</option>
                   <option value="development">Development</option>
                   <option value="testing">Testing</option>
@@ -226,7 +241,7 @@
                   <option value="finance">Finance</option>
                 </select>
 
-                <select  class="form-select">
+                <select id="new-select-desg" class="form-select" required>
                   <option value="" selected disabled>Select Designation</option>
                   <option value="frontend developer">Frontend Developer</option>
                   <option value="qa engineer">QA Engineer</option>
@@ -241,104 +256,33 @@
                   <option value="automation tester">Automation Tester</option>
                 </select>
 
+                <select id="new-select-status" class="form-select" required>
+                    <option value="">Status</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                  </select>
+
+
+                  <select id="new-select-usertype" class="form-select" required>
+                    <option value="">UserType</option>
+                    <option value="Employee">Employee</option>
+                    <option value="Admin">Admin</option>
+                  </select>
+
+
+
                 <button class="btn btn-primary">Submit</button>
               </form>
             </div>
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
 
-    <!-- Add Employee Modal -->
-    <div
-      class="modal fade"
-      id="employeeModal"
-      tabindex="-1"
-      aria-labelledby="employeeModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="employeeModalLabel">
-              Fill Employee Details
-            </h5>
 
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
 
-          <div class="modal-body">
-            <form id="employee-form" class="d-flex flex-column gap-2">
-          
-
-              <input
-                class="form-control"
-                type="text"
-                placeholder="Enter employee name"
-              />
-              <input
-                class="form-control"
-                type="email"
-                placeholder="Enter email"
-              />
-              <input
-                class="form-control"
-                type="text"
-                placeholder="Enter phone number"
-              />
-
-              <select class="form-select">
-                <option value="" selected disabled>Select Company</option>
-                <option value="google">Google</option>
-                <option value="microsoft">Microsoft</option>
-                <option value="amazon">Amazon</option>
-                <option value="infosys">Infosys</option>
-              </select>
-
-              <select class="form-select">
-                <option value="" selected disabled>Select Location</option>
-                <option value="chennai">Chennai</option>
-                <option value="bangalore">Bangalore</option>
-                <option value="hyderabad">Hyderabad</option>
-                <option value="coimbatore">Coimbatore</option>
-              </select>
-
-              <select class="form-select">
-                <option value="" selected disabled>Select Department</option>
-                <option value="development">Development</option>
-                <option value="testing">Testing</option>
-                <option value="management">Management</option>
-                <option value="hr">HR</option>
-                <option value="design">Design</option>
-                <option value="finance">Finance</option>
-              </select>
-
-              <select class="form-select">
-                <option value="" selected disabled>Select Designation</option>
-                <option value="frontend developer">Frontend Developer</option>
-                <option value="qa engineer">QA Engineer</option>
-                <option value="team lead">Team Lead</option>
-                <option value="backend developer">Backend Developer</option>
-                <option value="hr executive">HR Executive</option>
-                <option value="ui designer">UI Designer</option>
-                <option value="full stack developer">
-                  Full Stack Developer
-                </option>
-                <option value="accountant">Accountant</option>
-                <option value="automation tester">Automation Tester</option>
-              </select>
-
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+    
+   
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
