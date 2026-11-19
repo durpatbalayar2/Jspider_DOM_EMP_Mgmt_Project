@@ -26,10 +26,7 @@ closeBtn.addEventListener("click", function () {
 // Module-3 : Add new Employee in table
 
 addNewEmployee();
-
-
 // Module-4 : Delete and Edit Feature
 
-handleDelete()
-
-handleEdit()
+handleDelete();
+handleEdit();
