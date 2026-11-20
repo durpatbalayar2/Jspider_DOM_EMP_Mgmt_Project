@@ -31,7 +31,7 @@ function displayData(data) {
                   <td>${elem.phone}</td>
                   <td class=${`${elem.status == "Active" ? "text-success" : "text-danger"}`}>${elem.status}</td>
 
-                  <td class="d-flex gap-1 justify-content-center" > 
+                  <td class="d-flex gap-2 justify-content-center" > 
                    <button id=${elem.id} class="btn btn-success edit-btn">Edit </button>
                    <button id=${elem.id} class="btn btn-danger delete-btn">Delete </button>
                   </tr>`;
