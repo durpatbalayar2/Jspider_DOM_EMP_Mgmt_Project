@@ -53,7 +53,7 @@ export default function addNewEmployee() {
       employees.push(newEmployee);
       formpopEle.style.display = "none";
 
-      displayData(employees);
+      //displayData(employees);
     } else {
       //console.log(editId)
 
@@ -82,7 +82,9 @@ export default function addNewEmployee() {
 
       formpopEle.style.display = "none";
 
-      displayData(employees);
+      //displayData(employees);
     }
+    displayData(employees);
+    localStorage.setItem("employees", JSON.stringify(employees));
   });
 }

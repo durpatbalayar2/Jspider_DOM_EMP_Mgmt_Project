@@ -122,3 +122,15 @@ export let employees = [
     status: "Inactive",
   },
 ];
+
+// Retrive data from lS
+let storedUserData = localStorage.getItem("employees")
+
+if(storedUserData===null){
+  // First time loading the application
+  localStorage.setItem("employees",JSON.stringify(employees))
+}else{
+  // Data already exists in ls
+  employees = JSON.parse(storedUserData)
+
+}

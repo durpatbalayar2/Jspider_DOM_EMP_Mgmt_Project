@@ -20,6 +20,7 @@ export function handleDelete() {
         if (confirmation) {
           employees.splice(targetIndx, 1);
           displayData(employees);
+          localStorage.setItem("employees",JSON.stringify(employees))
         }
       }
     }
