@@ -29,20 +29,24 @@ function displayData(data) {
                   <td>${elem.userType}</td>
                   <td>${elem.email}</td>
                   <td>${elem.phone}</td>
-                  <td class=${`${elem.status == "Active" ? "text-success" : "text-danger"}`}>${elem.status}</td>
+                  <td class="${elem.status === "Active" ? "text-success" : "text-danger"} fw-semibold">${elem.status}</td>
 
                   <td class="d-flex gap-2 justify-content-center" > 
-                   <button id=${elem.id} class="btn btn-success edit-btn">Edit </button>
-                   <button id=${elem.id} class="btn btn-danger delete-btn">Delete </button>
+                   <button id=${elem.id} class="btn btn-success btn-sm  edit-btn">Edit </button>
+                   <button id=${elem.id} class="btn btn-danger btn-sm  delete-btn">Delete </button>
                   </tr>`;
     });
 
     tableDataContainer.innerHTML = htmlCode;
     totalEmpCount.textContent = `${data.length}`;
   } else {
-    tableDataContainer.textContent = "No data in table";
-    tableDataContainer.style.color = "red";
-    totalEmpCount.textContent = `${data.length}`;
+    htmlCode = `
+      <tr>
+        <td colspan="6" class="text-center text-danger py-4">
+          No employees found
+        </td>
+      </tr>
+    `;
   }
 }
 
